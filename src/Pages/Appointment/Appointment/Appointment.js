@@ -1,26 +1,27 @@
 import React, { useState } from "react";
-import banarIgBg from '../../../assets/images/bg.png';
+import banarIgBg from "../../../assets/images/bg.png";
 import AppointmentBanner from "../AppointmentBanner/AppointmentBanner";
 import AvailableAppointments from "../AvailableAppointments/AvailableAppointments";
-
 
 const Appointment = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   return (
-    <section  className="my-6"
-    style={{
-      background: `url(${banarIgBg})`,
-      backgroundSize: "cover",
-    }}>
-      <div>
+    <section>
+      <div
+        className="my-6"
+        style={{
+          background: `url(${banarIgBg})`,
+          backgroundSize: "100%",
+        }}
+      >
         <AppointmentBanner
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
         ></AppointmentBanner>
-        <AvailableAppointments
-          selectedDate={selectedDate}
-        ></AvailableAppointments>
       </div>
+      <AvailableAppointments
+        selectedDate={selectedDate}
+      ></AvailableAppointments>
     </section>
   );
 };
