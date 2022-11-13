@@ -8,6 +8,7 @@ const Banner = () => {
     <section className=""
       style={{
         background: `url(${banarIgBg})`,
+        backgroundSize: "cover",
       }}
     >
       <div className="hero ">
