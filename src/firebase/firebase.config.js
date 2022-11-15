@@ -17,3 +17,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export default app
+
+
+
+/**
+ * REACT_APP_apiKey= AIzaSyCQ2T1bLipVARwYxy9k3TAl51SDFSjAx5M
+REACT_APP_authDomain= doctors-portal-4cb88.firebaseapp.com
+REACT_APP_projectId= doctors-portal-4cb88
+REACT_APP_storageBucket= doctors-portal-4cb88.appspot.com
+REACT_APP_messagingSenderId= 394029828677
+REACT_APP_appId= 1:394029828677:web:43bcf225276144af59712c
+ */

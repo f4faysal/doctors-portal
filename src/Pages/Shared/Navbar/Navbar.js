@@ -20,9 +20,6 @@ const Navbar = () => {
         <Link to={"/"}>About</Link>
       </li>
       <li>
-        <Link to={"/"}>About</Link>
-      </li>
-      <li>
         <Link to={"/appointment"}>Appointment</Link>
       </li>
       <li>
@@ -31,11 +28,11 @@ const Navbar = () => {
       <li>
         <Link to={"/"}>Contact Us</Link>
       </li>
+      <li>
+        <Link to="/dashboard">Dashboard</Link>
+      </li>
       {user?.uid ? (
         <>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
           <li>
             <button onClick={handleLogOut}>Sign out</button>
           </li>

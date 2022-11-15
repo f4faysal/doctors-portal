@@ -28,9 +28,11 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast("User Created Successfully.");
+
         const userInfo = {
           displayName: data.name,
         };
+        
         updateUser(userInfo)
           .then(() => {})
           .catch((err) => console.log(err));
@@ -51,7 +53,6 @@ const SignUp = () => {
       .catch((error) => {
         console.log(error.message);
         // setLoginError(error.message);
-        
       });
   };
 
