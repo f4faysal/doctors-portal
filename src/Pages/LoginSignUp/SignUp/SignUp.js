@@ -21,7 +21,7 @@ const SignUp = () => {
   const from = location.state?.from?.pathname || "/";
 
   const handleSignUp = (data) => {
-    console.log(data);
+ 
     setSignUPError("");
     createUser(data.email, data.password)
       .then((result) => {
@@ -34,7 +34,9 @@ const SignUp = () => {
         };
         
         updateUser(userInfo)
-          .then(() => {})
+          .then(() => {
+            navigate('/')
+          })
           .catch((err) => console.log(err));
       })
       .catch((error) => {
