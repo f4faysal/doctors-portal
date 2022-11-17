@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import useToken from "../../../hooks/useToken";
 // import { AuthContext } from '../../contexts/AuthProvider';
 
 const SignUp = () => {
@@ -17,6 +18,9 @@ const SignUp = () => {
 
   const { createUser, updateUser, googleLogin } = useContext(AuthContext);
   const [signUpError, setSignUPError] = useState("");
+
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -72,22 +76,24 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        getuserTockn(email)
-        
+        setCreatedUserEmail(email);
+        // getuserTockn(email)
       });
   };
 
-  const getuserTockn = (email) => {
-    // fetch(`http://localhost:5000/jwt?email=${email}`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.accessToken){
-    //       localStorage.setItem('accessToken' , data.accessToken)
-    //       navigate("/");
-    //     }
-    //   });
-  };
-
+  // const getuserTockn = (email) => {
+  //   // fetch(`http://localhost:5000/jwt?email=${email}`)
+  //   //   .then((res) => res.json())
+  //   //   .then((data) => {
+  //   //     if (data.accessToken){
+  //   //       localStorage.setItem('accessToken' , data.accessToken)
+  //   //       navigate("/");
+  //   //     }
+  //   //   });
+  // };
+  if (token) {
+    navigate("/");
+  }
   return (
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-7">

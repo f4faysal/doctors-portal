@@ -150,6 +150,7 @@ const BookingModal = ({ treatment, setTreatment, selectedDate, refetch }) => {
     // TODO: send data to the server
     // and once data is saved then close the modal
     // and display success toast
+    
     fetch("http://localhost:5000/bookings", {
       method: "POST",
       headers: {
