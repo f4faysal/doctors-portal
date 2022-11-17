@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Appointment from "../../Pages/Appointment/Appointment/Appointment";
-import Dashboard from "../../Pages/Dashboard/Dashboard";
+import MyAppointment from "../../Pages/Dashboard/MyAppointment/MyAppointment";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/LoginSignUp/Login/Login";
 import SignUp from "../../Pages/LoginSignUp/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-
 
 const router = createBrowserRouter([
   {
@@ -18,23 +18,35 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path : '/login',
-         element : <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
+      },
+
+      {
+        path: "/signup",
+        element: <SignUp></SignUp>,
       },
       {
-        path : '/dashboard',
-         element : <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+        path: "/appointment",
+        element: <Appointment></Appointment>,
       },
+    ],
+  },
+
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
       {
-        path : '/signup',
-         element : <SignUp></SignUp>
+        path: "/dashboard",
+        element: <MyAppointment></MyAppointment>,
       },
-      {
-        path : '/appointment',
-         element : <Appointment></Appointment>
-      }
     ],
   },
 ]);
 
-export default router ;
+export default router;

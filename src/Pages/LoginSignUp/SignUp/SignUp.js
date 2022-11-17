@@ -8,34 +8,36 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 
 const SignUp = () => {
   const provider = new GoogleAuthProvider();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const { createUser, updateUser, googleLogin } = useContext(AuthContext);
   const [signUpError, setSignUPError] = useState("");
+
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
 
   const handleSignUp = (data) => {
- 
     setSignUPError("");
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        console.log("user singup", user);
         toast("User Created Successfully.");
 
         const userInfo = {
           displayName: data.name,
         };
-        
+
         updateUser(userInfo)
           .then(() => {
-            navigate('/')
+            saveUser(data.name, data.email);
           })
           .catch((err) => console.log(err));
       })
@@ -55,6 +57,22 @@ const SignUp = () => {
       .catch((error) => {
         console.log(error.message);
         // setLoginError(error.message);
+      });
+  };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        navigate("/");
       });
   };
 
