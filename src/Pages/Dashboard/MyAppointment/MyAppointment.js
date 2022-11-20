@@ -9,6 +9,8 @@ const MyAppointment = () => {
   const { data: bookings = [] } = useQuery({
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
+
+      // try cghat function handel to error 
       const res = await fetch(url, {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -33,7 +35,7 @@ const MyAppointment = () => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking, i) => (
+            {bookings?.map((booking, i) => (
               <tr key={booking._id}>
                 <th>{i + 1}</th>
                 <td>{booking.patient}</td>
